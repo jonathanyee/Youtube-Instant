@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Youtube Instant</title>
+      <link rel="stylesheet" href="style.css" />
+   
+      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+      
+      <script type="text/javascript">
+         var id = 'TU7JjJJZi1Q'; 
+         $(document).ready(function() {
+            
+            $('input[name$="search"]').keyup(function () {
+               
+               var value = encodeURIComponent($(this).val());
+               
+               var request = "http://gdata.youtube.com/feeds/api/videos?v=2&alt=jsonc&q=" + value + "&format=5&max-results=1";
+               //get id   
+               $("#video").text(request);
+               
+               $.getJSON(request,
+                  function foo(json) {
+                     id = json.data.items[0].id;
+                     console.log(id);
+                  });
+                 
+               var embed = '<object style="height: 390px; width: 640px">' +
+               '<param name="movie" value="http://www.youtube.com/v/' + id + '?version=3&autoplay=1&feature=player_embedded">' +
+               '<param name="allowFullScreen" value="true">' +
+               '<param name="allowScriptAccess" value="always">' +
+               '<embed src="http://www.youtube.com/v/' + id + '?version=3&autoplay=1&feature=player_embedded" ' +
+               'type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="640" height="390"></object>';
+               
+               $('#video').html(embed);
+               
+            }).keyup();
+         });
+      </script>
+   </head>
+
+   <body>
+      <div id="container">
+         <input type="text" name="search" value="beatles"/>
+         
+         <div id="video"></div>
+      </div>
+   </body>
+</html>
