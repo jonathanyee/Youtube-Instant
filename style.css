@@ -1,11 +1,70 @@
+html, body
+{
+   margin: 0;
+   padding: 0;
+}
+
 #container
 {
    margin: 0 auto;
-   text-align: center;
-   width: 800px;
+   width: 940px;
+}
+
+#video
+{
+   margin: 0 auto;
+   width: 700px;
+}
+h1, h2, h3, h4, h5, h6 
+{
+   font-weight: bold;
+   color: #404040;
+}
+
+h1 
+{
+   margin-bottom: 18px;
+   font-size: 30px;
+   line-height: 36px;
 }
 
 input
 {
+   font-size: 16px;
+   line-height: 22px;
+   margin-top: 25px;
    width: 400px;
+}
+
+div
+{
+   display: block;
+}
+
+.span
+{
+  display: inline;
+  float: left;
+  margin-left: 20px;
+}
+
+.row::before, .row::after 
+{
+   display: table;
+   content: "";
+}
+
+.row::after 
+{
+   clear: both;
+}
+
+.one-third
+{
+   width: 300px;
+}
+
+.two-third
+{
+   width: 600px;
 }
